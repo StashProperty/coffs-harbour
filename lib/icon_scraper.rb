@@ -60,10 +60,10 @@ module IconScraper
     root.search("Application").each do |application|
       council_reference = application.at("ReferenceNumber").inner_text.strip
 
-      unless application.at("Address Line1")
-        puts "Skipping due to lack of address for #{council_reference}"
-        next
-      end
+      #unless application.at("Address Line1")
+      #  puts "Skipping due to lack of address for #{council_reference}"
+      #  next
+      #end
       application_id = application.at("ApplicationId").inner_text.strip
 
       # No idea what this means but it's required to calculate the
@@ -73,10 +73,9 @@ module IconScraper
       info_url = "#{base_url}?id=#{application_id}"
       info_url += "&pprs=#{pprs}" if pprs
 
-      address = clean_whitespace(application.at("Address Line1").inner_text)
-      unless application.at("Address Line2").inner_text.empty?
-        address += ", " + clean_whitespace(application.at("Address Line2").inner_text)
-      end
+      info_page = agent.get(info_url)
+      address = clean_whitespace(info_page.at("#b_ctl00_ctMain_info_prop").inner_text)
+
 
       description = application.at("ApplicationDetails") ||
                     application.at("SubNatureOfApplication")
