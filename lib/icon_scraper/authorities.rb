@@ -89,11 +89,6 @@ module IconScraper
       url: "https://apptracking.northsydney.nsw.gov.au/Pages/XC.Track",
       period: "last14days"
     },
-    northern_beaches: {
-      url: "https://eservices.northernbeaches.nsw.gov.au/ePlanning/live/Public/XC.Track",
-      period: "last14days",
-      types: ["DevApp"]
-    },
     penrith: {
       url: "http://bizsearch.penrithcity.nsw.gov.au/ePlanning/Pages/XC.Track",
       period: "thismonth",
