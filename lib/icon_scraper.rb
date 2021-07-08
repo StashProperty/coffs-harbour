@@ -60,11 +60,36 @@ module IconScraper
     root.search("Application").each do |application|
       council_reference = application.at("ReferenceNumber").inner_text.strip
 
-      #unless application.at("Address Line1")
-      #  puts "Skipping due to lack of address for #{council_reference}"
-      #  next
-      #end
       application_id = application.at("ApplicationId").inner_text.strip
+
+      # For some reason Coffs Harbour isn't wrapping the address in an <Address>
+      line1 = application.at("Address Line1")
+      line2 = application.at("Address Line2")
+
+      if line1.nil?
+        properties = application.search("Line1").map{|p| p.parent}.select do |p|
+          p.at("ApplicationId").inner_text == application_id
+        end
+        # If there's more than one property only consider the first
+        if properties.first
+          line1 = properties.first.at("Line1")
+          line2 = properties.first.at("Line2")
+          line3 = properties.first.at("Line3")
+        end
+      end
+
+      if line1.nil?
+        puts "No address found for #{council_reference}. So, skipping"
+        next
+      end
+
+      address = clean_whitespace(line1.inner_text)
+      unless line2.nil? || line2.inner_text.empty?
+        address += ", " + clean_whitespace(line2.inner_text)
+      end
+      unless line3.nil? || line3.inner_text.empty?
+        address += ", " + clean_whitespace(line3.inner_text)
+      end
 
       # No idea what this means but it's required to calculate the
       # correct info_url
@@ -72,10 +97,6 @@ module IconScraper
 
       info_url = "#{base_url}?id=#{application_id}"
       info_url += "&pprs=#{pprs}" if pprs
-
-      info_page = agent.get(info_url)
-      address = clean_whitespace(info_page.at("#b_ctl00_ctMain_info_prop").inner_text)
-
 
       description = application.at("ApplicationDetails") ||
                     application.at("SubNatureOfApplication")
