@@ -66,10 +66,6 @@ module IconScraper
       period: "last14days",
       types: [161]
     },
-    liverpool: {
-      url: "https://eplanning.liverpool.nsw.gov.au/Pages/XC.Track",
-      period: "last14days"
-    },
     mosman: {
       url: "http://portal.mosman.nsw.gov.au/Pages/XC.Track",
       period: "last14days",
