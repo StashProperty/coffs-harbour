@@ -26,19 +26,9 @@ module IconScraper
       url: "http://datracker.richmondvalley.nsw.gov.au/Pages/XC.Track",
       period: "last28days"
     },
-    central_highlands: {
-      url: "https://track.chrc.qld.gov.au/Pages/XC.Track",
-      period: "last28days",
-      types: [205, 400, 401, 402, 403, 405]
-    },
     whitsunday: {
       url: "http://eplanning.whitsundayrc.qld.gov.au/Pages/XC.Track",
       period: "last28days"
-    },
-    gosford: {
-      url: "https://plan.s.centralcoast.nsw.gov.au/Pages/XC.Track",
-      period: "last14days",
-      ssl_verify: false
     },
     cumberland: {
       url: "https://cumberland-eplanning.t1cloud.com/Pages/XC.Track",
