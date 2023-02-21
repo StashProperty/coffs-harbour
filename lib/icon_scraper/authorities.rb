@@ -3,7 +3,7 @@
 module IconScraper
   AUTHORITIES = {
     strathfield: {
-      url: "http://daenquiry.strathfield.nsw.gov.au/Pages/XC.Track",
+      url: "https://datracker.strathfield.nsw.gov.au/Home/Search",
       period: "last28days"
     },
     mackay: {
@@ -18,10 +18,10 @@ module IconScraper
       url: "https://etrack.kyogle.nsw.gov.au/Pages/XC.Track",
       period: "last28days"
     },
-    greater_hume: {
-      url: "http://datracker.greaterhume.nsw.gov.au/Pages/XC.Track",
-      period: "last28days"
-    },
+#     greater_hume: {
+#       url: "http://datracker.greaterhume.nsw.gov.au/Pages/XC.Track",
+#       period: "last28days"
+#     },
     richmond_valley: {
       url: "http://datracker.richmondvalley.nsw.gov.au/Pages/XC.Track",
       period: "last28days"
@@ -61,11 +61,11 @@ module IconScraper
       period: "last14days",
       ssl_verify: false
     },
-    leichhardt: {
-      url: "http://www.eservices.lmc.nsw.gov.au/ApplicationTracking/Pages/XC.Track",
-      period: "last14days",
-      types: [161]
-    },
+#     leichhardt: {
+#       url: "http://www.eservices.lmc.nsw.gov.au/ApplicationTracking/Pages/XC.Track",
+#       period: "last14days",
+#       types: [161]
+#     },
     mosman: {
       url: "http://portal.mosman.nsw.gov.au/Pages/XC.Track",
       period: "last14days",
@@ -76,7 +76,7 @@ module IconScraper
       period: "last14days"
     },
     penrith: {
-      url: "http://bizsearch.penrithcity.nsw.gov.au/ePlanning/Pages/XC.Track",
+      url: "https://datracker.penrithcity.nsw.gov.au/track/Pages/XC.Track/SearchApplication.aspx?",
       period: "thismonth",
       types: %w[DA DevApp]
     },
@@ -102,11 +102,11 @@ module IconScraper
       url: "https://srr-prod-icon.saas.t1cloud.com/Pages/XC.Track",
       period: "last28days"
     },
-    waverley: {
-      url: "http://eservices.waverley.nsw.gov.au/Pages/XC.Track",
-      period: "last14days",
-      types: %w[A0 SP2A TPO B1 B1A FPS]
-    },
+#     waverley: {
+#       url: "http://eservices.waverley.nsw.gov.au/Pages/XC.Track",
+#       period: "last14days",
+#       types: %w[A0 SP2A TPO B1 B1A FPS]
+#     },
     willoughby: {
       url: "https://eplanning.willoughby.nsw.gov.au/pages/xc.track",
       period: "last28days",
@@ -118,8 +118,8 @@ module IconScraper
       ]
     },
     canada_bay: {
-      url: "http://datracking.canadabay.nsw.gov.au/Pages/XC.Track",
-      period: "last14days"
+      url: "https://canadabay-eplanning.t1cloud.com/Pages/XC.Track/SearchApplication.aspx",
+      period: "last30days"
     },
     tweed: {
       url: "https://s1.tweed.nsw.gov.au/Pages/XC.Track",
@@ -131,5 +131,6 @@ module IconScraper
       period: "thismonth",
       types: %w[PlnPermit PlnAppeals PlnPostPer PlanPermGr PlanAmend PlanAppeal]
     }
+
   }.freeze
 end
